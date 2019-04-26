@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend 
+  serviceName: "frontend"
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 9999
+        image: gcr.io/maximal-brace-238118/frontend-poc:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: frontend  
+        - containerPort: 9999
+          name: probe  
