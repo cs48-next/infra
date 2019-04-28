@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: facilitator-ingress  
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: facilitator
+    networking.gke.io/managed-certificates: facilitator-certificate
+spec:
+  backend:
+    serviceName: facilitator-service
+    servicePort: 80

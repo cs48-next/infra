@@ -1,7 +1,7 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-  name: frontend-certificate
+  name: facilitator-certificate
 spec:
   domains:
-    - song.buzz
+  - api.song.buzz
